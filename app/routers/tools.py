@@ -68,4 +68,6 @@ async def generate_blog_titles(user_topic: str,request: Request):
     }
 
 
-
+@router.get("/example/new-endpoint")
+async def test():
+    return "Something"
