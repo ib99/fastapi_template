@@ -17,14 +17,19 @@ from slowapi.errors import RateLimitExceeded
 from starlette.requests import Request
 from starlette.types import ASGIApp
 
-from .routers import tools
+from .routers import google_rank, tools
 from .helpers import record_log, LogLevel,get_calling_function_name ,get_calling_module_name
 
 
 
 # Assumed imports from your other modules
 from .routers import (
-    tools
+    tools,
+    new_tool,
+    image_converter,
+    youtube,
+    google_rank,
+    plagiarism,
 )
 from .mongo import establish_connection, mongo_db_instance
 from .logger_setup import initialize_logger
@@ -203,5 +208,10 @@ async def global_exception_handler(request: Request, exc: Exception):
 
 
 
-
+# Add routers here
 app.include_router(tools.router, tags=["tools"])
+app.include_router(new_tool.router, tags=["New Tool"])
+app.include_router(image_converter.router, tags=["Image Converter"])
+app.include_router(youtube.router, tags=["Youtube"])
+app.include_router(google_rank.router, tags=["Google"])
+app.include_router(plagiarism.router, tags=["Plagiarism Checker"])
