@@ -16,3 +16,6 @@ google-api-python-client
 boto3
 Pillow
 python-youtube
+selenium
+selenium_stealth
+python-multipart
